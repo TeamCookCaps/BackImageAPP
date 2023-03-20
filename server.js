@@ -1,5 +1,7 @@
 const express = require('express');
-const db = require('./database.js');
+const db = require('./dbconfig.js');
+const dbsetting = require('./dbsetting.js');
+
 const app = express();
 const port = 3000;
 
@@ -18,6 +20,12 @@ app.get('/testDB', async(req, res) => {
     let [rows, fields] = await db.pool.query(query);
     
     res.send(rows);
+})
+
+// DB에 table 생성
+app.get('/createDB', (req, res) => {
+  dbsetting.dbinit();
+  console.log(`DB setting successfully`);
 })
 
 app.listen(port, () => {
