@@ -2,7 +2,7 @@
   "name": "BackImageAPP",
   "packageManager": "yarn@3.4.1",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node app.js",
     "build": "tsc && node dist"
   },
   "dependencies": {
@@ -10,6 +10,9 @@
     "mysql2": "^3.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21"
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.5",
+    "nodemon": "^2.0.21",
+    "typescript": "^5.0.2"
   }
 }
