@@ -4,6 +4,7 @@ USE `capstonedb`;
 create table User(
 	UID varchar(60) not null,
     nick_name varchar(50) not null,
+--    password varchar(50),
 PRIMARY KEY(UID)
 );
 
