@@ -12,7 +12,7 @@ export class UserService {
         try {
             const connect = await pool.getConnection(async(conn) => conn);
             const [rows] = await connect.query(req_query);
-            //console.log(rows);
+            
             connect.release();
             
             if(rows.affectedRows !=1) return "db insert error - 컬럼 추가 시 오류가 발생했습니다.";
