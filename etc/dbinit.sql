@@ -68,7 +68,6 @@ foreign key(id) references StoryInfo(id),
 foreign key(imageId) references ImageInfo(id)
 );
 
-
 create table TestTable(
 	testId int,
     testPw int,
