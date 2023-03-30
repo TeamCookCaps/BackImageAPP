@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { asyncErrorWrapper } from "../../asyncErrorWrapper.js";
 import ImageInfo from "../../models/imageInfo.js";
+import { ImageInfoService } from "../../services/imageInfo.js";
 
 const route = Router();
 
