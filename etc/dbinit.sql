@@ -71,7 +71,9 @@ foreign key(imageId) references ImageInfo(id)
 
 create table Palette(
     image_id int not null,
-    rgb varchar(20) not null,
+    r_data int not null,
+    g_data int not null,
+    b_data int not null,
     rgb_type varchar(8) not null,
 primary key(image_id),
 foreign key(image_id) references ImageInfo(id)
@@ -82,7 +84,6 @@ create table TestTable(
     testPw int,
 primary key(testId)
 );
-
 insert into TestTable values (1, 100);
 
 insert into CategoryInfo(category_name) values ('animal');
