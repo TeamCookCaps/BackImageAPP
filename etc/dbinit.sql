@@ -74,10 +74,15 @@ create table Palette(
     r_data int not null,
     g_data int not null,
     b_data int not null,
-    rgb_type varchar(8) not null,
-primary key(image_id),
-foreign key(image_id) references ImageInfo(id)
+    rgb_type varchar(8) not null
+--primary key(image_id),
+--foreign key(image_id) references ImageInfo(id)
 );
+
+/* palette 테이블 기본키, 외래키 삭제 코드
+alter table palette drop foreign key palette_ibfk_1;
+alter table palette drop primary key;
+*/
 
 create table TestTable(
 	testId int,
