@@ -5,7 +5,7 @@ import ImageInfo from "../../models/imageInfo.js";
 const route = Router();
 
 export default (app) => {
-  app.use("/api/image_upload", route);
+  app.use("/imageInfo", route);
 
   route.post(
     "/",
