@@ -12,8 +12,8 @@ create table ImageInfo(
 	id int not null AUTO_INCREMENT,
     uid varchar(60) not null,
     image_url char(200) not null,
-    image_date datetime not null,
-    image_location varchar(120) not null,
+    image_date datetime null,
+    image_location varchar(120) null,
     image_width int not null,
     image_height int not null,
     delete_yn char(1) not null default 'N',
@@ -21,21 +21,6 @@ create table ImageInfo(
     wallpaper_yn char(1) not null default 'N', 
 primary key(id),
 foreign key(uid) references user(uid));
-
--- create table ImageInfo(
--- 	id int not null,
---     uid varchar(60) not null,
---     image_url char(200) not null,
---     image_date int not null,
---     image_location varchar(120) not null,
---     image_width int not null,
---     image_height int not null,
---     delete_yn char(1) not null default 'N',
---     favorite_yn char(1) not null default 'N',
---     wallpaper_yn char(1) not null default 'N', 
--- primary key(id),
--- foreign key(uid) references user(uid),
--- );
     
 create table CategoryInfo(
 	category_name varchar(20) not null,
