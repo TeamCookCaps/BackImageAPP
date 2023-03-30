@@ -71,7 +71,9 @@ foreign key(imageId) references ImageInfo(id)
 
 create table Palette(
     image_id int not null,
-    rgb varchar(20) not null,
+    r_data int not null,
+    g_data int not null,
+    b_data int not null,
     rgb_type varchar(8) not null,
 primary key(image_id),
 foreign key(image_id) references ImageInfo(id)
