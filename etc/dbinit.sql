@@ -84,7 +84,6 @@ create table TestTable(
     testPw int,
 primary key(testId)
 );
-
 insert into TestTable values (1, 100);
 
 insert into CategoryInfo(category_name) values ('animal');
