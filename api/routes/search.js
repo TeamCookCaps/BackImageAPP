@@ -14,7 +14,7 @@ export default (app) => {
             const { word, color } = req.body;
             let SearchServiceInstance = new SearchService({ImageInfo});
             if(color === undefined){ //word search
-                const searchList = await SearchServiceInstance.search(word,color);
+                const searchList = await SearchServiceInstance.searchWord(word,color);
                 res.status(201).json(
                     {
                         location : 'success',

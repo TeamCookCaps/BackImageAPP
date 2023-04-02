@@ -5,7 +5,7 @@ export class SearchService {
         this.ImageInfo = ImageInfo;
     }
     
-    async search(word){
+    async searchWord(word){
         let req_query = this.ImageInfo.getSearchResult(word);
         console.log(req_query);
         
@@ -23,7 +23,7 @@ export class SearchService {
 
     //word, color 함께 검색
     async searchWordColor(){
-        
+
     }
     
     
