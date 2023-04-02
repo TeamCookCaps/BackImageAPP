@@ -13,8 +13,9 @@ export default (app) => {
         try{
             const { word, color } = req.body;
             let SearchServiceInstance = new SearchService({ImageInfo});
-            if(color === undefined){ //word search
-                const searchList = await SearchServiceInstance.searchWord(word,color);
+            console.log('color :: '+color);
+            if(color === undefined || color == ''){ //word search
+                const searchList = await SearchServiceInstance.searchWord(word);
                 res.status(201).json(
                     {
                         location : 'success',
@@ -23,10 +24,17 @@ export default (app) => {
                     }
                 );
             }else{ // word+color search
-                
+                const searchWCResult = await SearchServiceInstance.searchWordColor(word,color);
+                res.status(201).json(
+                    {
+                        location : 'success',
+                        msg : null,
+                        data : searchWCResult,
+                    }
+                );
             }
         }catch(error){
-            res.status(400).json(
+            res.status(500).json(
                 {
                   location: 'error',
                   msg : "데이터 조회에 실패했습니다",
