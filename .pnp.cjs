@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@ctrl/tinycolor", "npm:3.6.0"],\
             ["@types/express", "npm:4.17.17"],\
             ["@types/node", "npm:18.15.5"],\
             ["body-parser", "npm:1.20.2"],\
@@ -50,6 +51,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@colors-colors-npm-1.5.0-875af3a8b4-d64d5260be.zip/node_modules/@colors/colors/",\
           "packageDependencies": [\
             ["@colors/colors", "npm:1.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@ctrl/tinycolor", [\
+        ["npm:3.6.0", {\
+          "packageLocation": "./.yarn/cache/@ctrl-tinycolor-npm-3.6.0-fc89a669c3-4d1e481b4d.zip/node_modules/@ctrl/tinycolor/",\
+          "packageDependencies": [\
+            ["@ctrl/tinycolor", "npm:3.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -241,6 +251,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["BackImageAPP", "workspace:."],\
+            ["@ctrl/tinycolor", "npm:3.6.0"],\
             ["@types/express", "npm:4.17.17"],\
             ["@types/node", "npm:18.15.5"],\
             ["body-parser", "npm:1.20.2"],\
