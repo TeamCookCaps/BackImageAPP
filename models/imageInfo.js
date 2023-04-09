@@ -15,7 +15,7 @@ const ImageInfo = {
                                                 where b.image_id in(${image_id}) and (image_location like '%${word}%' 
                                                 or b.category_name like '%${word}%'
                                                 or parent_name like '%${word}%');`,
-  getSimilarColors : (minR,maxR,minG,maxG,minB,maxB) => `SELECT image_id FROM palette WHERE r BETWEEN ${minR} AND ${maxR} AND g BETWEEN ${minG} AND ${maxG} AND b BETWEEN ${minB} AND ${maxB}`
+  getSimilarColors : (listR,listG,listB) => `SELECT image_id FROM palette WHERE r in(${listR}) AND g in(${listG}) AND b in(${listB})`
 };
 
 export default ImageInfo;

@@ -2,8 +2,8 @@
   "name": "BackImageAPP",
   "packageManager": "yarn@3.4.1",
   "scripts": {
-    "start": "node app.js",
-    "build": "tsc && node dist"
+    "start": "nodemon --watch \"./src/**/*.ts\" --exec \"yarn build\"",
+    "build": "node app.js"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.6.0",
