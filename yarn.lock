@@ -12,6 +12,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ctrl/tinycolor@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "@ctrl/tinycolor@npm:3.6.0"
+  checksum: 4d1e481b4d7f9bb23d21b5436726034d37c2a1bc751b5169ef29ead0237e96443dbccbcfa887e20c3a65ba1b5e270063bb21b4034eac97561b980cbbd5e92a16
+  languageName: node
+  linkType: hard
+
 "@dabh/diagnostics@npm:^2.0.2":
   version: 2.0.3
   resolution: "@dabh/diagnostics@npm:2.0.3"
@@ -171,6 +178,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "BackImageAPP@workspace:."
   dependencies:
+    "@ctrl/tinycolor": ^3.6.0
     "@types/express": ^4.17.17
     "@types/node": ^18.15.5
     body-parser: ^1.20.2

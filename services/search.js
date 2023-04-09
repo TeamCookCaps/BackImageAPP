@@ -1,4 +1,5 @@
 import {pool} from "../loaders/database.js";
+import { TinyColor } from '@ctrl/tinycolor';
 
 export class SearchService {
     constructor({ImageInfo}){
@@ -23,17 +24,25 @@ export class SearchService {
 
     //word, color 함께 검색
     async searchWordColor(word,color){
-        // hex -> rgb
-        const rgbValues = this.hexToRGB(color);
-        console.log(rgbValues);
         // 유사한 색상 찾기
-        const result = await this.findSimilarColorIdDB(rgbValues)
+        const analogousRed = [];
+        const analogousGreen = [];
+        const analogousBlue = [];
+        const colors = new TinyColor(color).analogous();
+        colors.map( t => {
+            console.log(t);
+            analogousRed.push(Math.floor(t.r));
+            analogousGreen.push(Math.floor(t.g));
+            analogousBlue.push(Math.floor(t.b));
+        });
 
-        // 색상 배열로 저장
+        const result = await this.findSimilarColorIdDB(analogousRed,analogousGreen,analogousBlue);
+
+        //색상 배열로 저장
         const arr = []
-        result.map(item => arr.push(item['image_id']))
-        if(arr?.length === 0) arr.push("' '")
-        
+        result.map(item => arr.push(item['image_id']));
+        if(arr?.length === 0) arr.push("0");
+
         let req_query = this.ImageInfo.getSearchWordColorResult(word,arr);
         console.log(req_query);
 
@@ -78,20 +87,9 @@ export class SearchService {
      * @param {Array} rgbValues r,g,b 형태의 배열
      * @returns image_id 배열
      */
-    async findSimilarColorIdDB(rgbValues) {
-        const threshold = { r: 20, g: 20, b: 20 }; // Maximum difference allowed for each color component
-        const minRGB = {
-            r: rgbValues.r - threshold.r,
-            g: rgbValues.g - threshold.g,
-            b: rgbValues.b - threshold.b,
-        };
-        const maxRGB = {
-            r: rgbValues.r + threshold.r,
-            g: rgbValues.g + threshold.g,
-            b: rgbValues.b + threshold.b,
-        };
+    async findSimilarColorIdDB(rValue,gValue,bValue) {
 
-        let query = this.ImageInfo.getSimilarColors(minRGB.r,maxRGB.r,minRGB.g,maxRGB.g,minRGB.b,maxRGB.b);
+        let query = this.ImageInfo.getSimilarColors(rValue,gValue,bValue);
         try {
             const connect = await pool.getConnection(async(conn) => conn);
             const [rows] = await connect.query(query);
@@ -101,6 +99,4 @@ export class SearchService {
             throw new Error(error);
         }
     }
-    
-    
 }
