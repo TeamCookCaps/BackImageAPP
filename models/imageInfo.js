@@ -21,6 +21,7 @@ const ImageInfo = {
                                                 or b.category_name like '%${word}%'
                                                 or parent_name like '%${word}%');`,
   getSimilarColors : (listR,listG,listB) => `SELECT image_id FROM palette WHERE r in(${listR}) AND g in(${listG}) AND b in(${listB})`,
+  getTrashImageQuery: (uid) => `SELECT * FROM ImageInfo WHERE delete_yn = 'Y' AND uid='${uid}'`
 };
 
 export default ImageInfo;
