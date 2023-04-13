@@ -10,9 +10,9 @@ export default (app) => {
 
     route.post("/", asyncErrorWrapper(async (req, res, next) => {
             try {
-                const { trashList } = req.body;
+                const { trashId } = req.body;
                 const deleteServiceInstance = new DeleteService({ removeImage });
-                const result = await deleteServiceInstance.removeAllImage(trashList);
+                const result = await deleteServiceInstance.removeAllImage(trashId);
                 res.status(201).json({
                     location: "success",
                     msg: null,
