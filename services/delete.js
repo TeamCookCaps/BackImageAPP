@@ -20,8 +20,8 @@ export class DeleteService {
     }
 
     // 휴지통 전체 삭제
-    async removeAllImage(trashList) {
-        const req_query = this.removeImage.removeAllImage(trashList);
+    async removeAllImage(trashId) {
+        const req_query = this.removeImage.removeAllImage(trashId);
         console.log(req_query);
         try {
             const connect = await pool.getConnection(async (conn) => conn);
