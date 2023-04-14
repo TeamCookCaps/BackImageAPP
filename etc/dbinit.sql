@@ -33,7 +33,13 @@ create table ImageCategory(
 primary key(category_name, image_id),
 foreign key(category_name) references CategoryInfo(category_name),
 foreign key(image_id) references ImageInfo(id)
+on delete cascade
 );
+
+/* imageCategory 테이블 외래키 cascade 추가
+alter table imagecategory drop constraint imagecategory_ibfk_2;
+alter table imagecategory add foreign key(image_id) references imageInfo(id) on delete cascade;
+*/
 
 create table Parent_category(
     category_name varchar(20) not null,
@@ -66,7 +72,13 @@ create table ImageStory(
 primary key(id, imageId),
 foreign key(id) references StoryInfo(id),
 foreign key(imageId) references ImageInfo(id)
+on delete cascade
 );
+
+/* imageStory 테이블 외래키 cascade 추가
+alter table imagestory drop constraint imagestory_ibfk_2;
+alter table imagestory add foreign key(imageId) references imageInfo(id) on delete cascade;
+*/
 
 create table Palette(
     image_id int not null,
