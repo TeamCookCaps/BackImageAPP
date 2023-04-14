@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { asyncErrorWrapper } from "../../asyncErrorWrapper.js";
-import removeImage from "../../models/removeImage.js";
-import { DeleteService } from "../../services/delete.js";
+import trash from "../../models/trash.js";
+import { TrashService } from "../../services/trash.js";
 
 const route = Router();
 
@@ -11,8 +11,8 @@ export default (app) => {
     route.post("/", asyncErrorWrapper(async (req, res, next) => {
             try {
                 const { trashId } = req.body;
-                const deleteServiceInstance = new DeleteService({ removeImage });
-                const result = await deleteServiceInstance.removeAllImage(trashId);
+                const trashServiceInstance = new TrashService({ trash });
+                const result = await trashServiceInstance.removeAllImage(trashId);
                 res.status(201).json({
                     location: "success",
                     msg: null,
