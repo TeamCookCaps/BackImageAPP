@@ -6,14 +6,20 @@ const ImageInfo = {
                                   LEFT JOIN parent_category pc ON ic.category_name = pc.category_name
                                   WHERE uid='${uid}' AND delete_yn='N';`,
                                   
-  getSearchResult :(word) => `select id,uid,image_url,image_date,image_location,image_width,image_height,b.category_name,parent_name,delete_yn
+  getSearchResult :(uid,word) => `select id,uid,image_url,image_date,image_location,image_width,image_height,b.category_name,parent_name,IFNULL(f.favorite_yn,'n') as favorite_yn,delete_yn
                               from ImageInfo a INNER JOIN ImageCategory b ON a.id = b.image_id 
-                              LEFT OUTER JOIN parent_category c on b.category_name = c.category_name 
+                              LEFT OUTER JOIN parent_category c on b.category_name = c.category_name
+                              LEFT OUTER JOIN (
+                                select imageid,favorite_yn from FavoriteInfo where uid='${uid}'
+                              ) f on a.id = f.imageid
                               where delete_yn='N' and (image_location like '%${word}%' or b.category_name like '%${word}%' or parent_name like '%${word}%');`,
                               
-  getSearchWordColorResult : (word,image_id) => `select id,uid,image_url,image_date,image_location,image_width,image_height,b.category_name,parent_name,rgb_info,delete_yn
+  getSearchWordColorResult : (uid,word,image_id) => `select id,uid,image_url,image_date,image_location,image_width,image_height,b.category_name,parent_name,rgb_info,IFNULL(f.favorite_yn,'n') as favorite_yn,delete_yn
                                                 from ImageInfo a INNER JOIN ImageCategory b ON a.id = b.image_id 
                                                 LEFT OUTER JOIN parent_category c on b.category_name = c.category_name 
+                                                LEFT OUTER JOIN (
+                                                  select imageid,favorite_yn from FavoriteInfo where uid='${uid}'
+                                                ) f on a.id = f.imageid
                                                 INNER JOIN (
                                                 select image_id, json_arrayagg(json_object('red',r,'green',g,'blue',b,'type',rgb_type)) as rgb_info
                                                 from palette

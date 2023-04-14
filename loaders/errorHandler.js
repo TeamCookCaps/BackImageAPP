@@ -24,7 +24,7 @@ export default (app) => {
 
     // error handler
     app.use(function(error, req, res, next) {
-      console.error("여깄다"+error.message);
+      console.error("error"+error.message);
       res.status(500).json({ message: error.message });
     });
 }

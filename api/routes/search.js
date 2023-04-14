@@ -9,13 +9,14 @@ export default (app) => {
     app.use('/search', route);
 
     // 검색 조회
-    route.post('/', asyncErrorWrapper(async(req, res, next) => {
+    route.get('/', asyncErrorWrapper(async(req, res, next) => {
         try{
-            const { word, color } = req.body;
+            const { uid, word, color } = req.query;
+            console.log(uid, word, color)
             let SearchServiceInstance = new SearchService({ImageInfo});
-            console.log('color :: '+color);
+     
             if(color === undefined || color == ''){ //word search
-                const searchList = await SearchServiceInstance.searchWord(word);
+                const searchList = await SearchServiceInstance.searchWord(uid, word);
                 res.status(201).json(
                     {
                         location : 'success',
@@ -24,7 +25,7 @@ export default (app) => {
                     }
                 );
             }else{ // word+color search
-                const searchWCResult = await SearchServiceInstance.searchWordColor(word,color);
+                const searchWCResult = await SearchServiceInstance.searchWordColor(uid, word,color);
                 res.status(201).json(
                     {
                         location : 'success',

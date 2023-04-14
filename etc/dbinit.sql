@@ -17,7 +17,6 @@ create table ImageInfo(
     image_width int not null,
     image_height int not null,
     delete_yn char(1) not null default 'N',
-    favorite_yn char(1) not null default 'N',
     wallpaper_yn char(1) not null default 'N', 
 primary key(id),
 foreign key(uid) references user(uid));
@@ -96,12 +95,14 @@ alter table palette drop foreign key palette_ibfk_1;
 alter table palette drop primary key;
 */
 
-create table TestTable(
-	testId int,
-    testPw int,
-primary key(testId)
+-- 좋아요 테이블
+create table FavoriteInfo(
+    uid varchar(60) not null,
+    imageid int not null,
+    favorite_yn char(1) not null default 'y',
+    foreign key(uid) references user(uid)
 );
-insert into TestTable values (1, 100);
+
 
 insert into CategoryInfo(category_name) values ('animal');
 insert into CategoryInfo(category_name) values ('dog');

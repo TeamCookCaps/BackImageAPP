@@ -6,16 +6,14 @@ export class SearchService {
         this.ImageInfo = ImageInfo;
     }
     
-    async searchWord(word){
-        let req_query = this.ImageInfo.getSearchResult(word);
+    async searchWord(uid, word){
+        let req_query = this.ImageInfo.getSearchResult(uid, word);
         console.log(req_query);
         
         try {
             const connect = await pool.getConnection(async(conn) => conn);
             const [rows] = await connect.query(req_query);
             connect.release();
-
-            console.log(rows)
             return rows; 
         } catch (error) {
             throw new Error(error);
@@ -23,7 +21,7 @@ export class SearchService {
     }
 
     //word, color 함께 검색
-    async searchWordColor(word,color){
+    async searchWordColor(uid, word,color){
         // 유사한 색상 찾기
         const analogousRed = [];
         const analogousGreen = [];
@@ -43,7 +41,7 @@ export class SearchService {
         result.map(item => arr.push(item['image_id']));
         if(arr?.length === 0) arr.push("0");
 
-        let req_query = this.ImageInfo.getSearchWordColorResult(word,arr);
+        let req_query = this.ImageInfo.getSearchWordColorResult(uid, word,arr);
         console.log(req_query);
 
         try {

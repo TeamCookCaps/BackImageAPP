@@ -14,3 +14,7 @@ export const pool = mysql.createPool(
         multipleStatements: true // allows to use multiple statements
     }
 )
+
+export async function dbConnect(){
+    return await pool.getConnection(async (conn) => conn);
+}
