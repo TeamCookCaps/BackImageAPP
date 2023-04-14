@@ -4,6 +4,7 @@ import ImageInfo from "./routes/imageInfo.js";
 import search from "./routes/search.js";
 import trash from "./routes/trash.js";
 import removeAll from "./routes/removeAll.js";
+import restoreAll from "./routes/restoreAll.js";
 
 export default () => {
   const app = Router();
@@ -12,5 +13,6 @@ export default () => {
   search(app);
   trash(app);
   removeAll(app);
+  restoreAll(app);
   return app;
 };
