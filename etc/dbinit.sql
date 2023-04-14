@@ -87,7 +87,7 @@ alter table palette drop primary key;
 create table FavoriteInfo(
     uid varchar(60) not null,
     imageid int not null,
-    favorite_yn char(1) not null default 'Y',
+    favorite_yn char(1) not null default 'y',
     foreign key(uid) references user(uid)
 );
 
