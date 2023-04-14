@@ -1,13 +1,13 @@
 import {pool} from "../loaders/database.js";
 
-export class DeleteService {
-    constructor({ removeImage }) {
-        this.removeImage = removeImage;
+export class TrashService {
+    constructor({ trash }) {
+        this.trash = trash;
     }
 
     // delete_yn == 'Y'인 이미지 조회
     async getTrashImage(uid) {
-        const req_query = this.removeImage.getTrashImageQuery(uid);
+        const req_query = this.trash.getTrashImageQuery(uid);
         console.log(req_query);
         try {
             const connect = await pool.getConnection(async (conn) => conn);
@@ -21,7 +21,7 @@ export class DeleteService {
 
     // 휴지통 전체 삭제
     async removeAllImage(trashId) {
-        const req_query = this.removeImage.removeAllImage(trashId);
+        const req_query = this.trash.removeAllImage(trashId);
         console.log(req_query);
         try {
             const connect = await pool.getConnection(async (conn) => conn);
@@ -35,7 +35,7 @@ export class DeleteService {
 
     // 휴지통 전부 복구
     async restoreAllImage(trashId) {
-        const req_query = this.removeImage.restoreAllImage(trashId);
+        const req_query = this.trash.restoreAllImage(trashId);
         console.log(req_query);
         try {
             const connect = await pool.getConnection(async (conn) => conn);
