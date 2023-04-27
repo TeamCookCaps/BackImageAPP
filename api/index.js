@@ -6,6 +6,7 @@ import favorite from "./routes/favorite.js";
 import trash from "./routes/trash.js";
 import removeAll from "./routes/removeAll.js";
 import restoreAll from "./routes/restoreAll.js";
+import imageDelete from "./routes/imageDelete.js";
 import recommand from "./routes/recommand.js";
 
 export default () => {
@@ -17,6 +18,7 @@ export default () => {
   trash(app);
   removeAll(app);
   restoreAll(app);
+  imageDelete(app);
   recommand(app);
   return app;
 };
