@@ -18,6 +18,7 @@ create table ImageInfo(
     image_height int not null,
     delete_yn char(1) not null default 'N',
     wallpaper_yn char(1) not null default 'N', 
+    story_yn char(1) not null default 'N',
 primary key(id),
 foreign key(uid) references user(uid));
     
@@ -49,37 +50,6 @@ foreign key(category_name) references CategoryInfo(category_name),
 foreign key(parent_name) references CategoryInfo(category_name)
 );
 
-create table StoryMusic(
-	id int not null,
-    story_music_url char(255) not null,
-primary key(id)
-);
-
-create table StoryInfo(
-	id int not null,
-    story_title varchar(20) not null,
-    UUID varchar(60) not null,
-    story_url char(255) not null,
-    story_music_id int not null,
-primary key(id),
-foreign key(UUID) references user(UID),
-foreign key(story_music_id) references StoryMusic(id)
-);
-
-create table ImageStory(
-	id int not null,
-    imageId int not null,
-primary key(id, imageId),
-foreign key(id) references StoryInfo(id),
-foreign key(imageId) references ImageInfo(id)
-on delete cascade
-);
-
-/* imageStory 테이블 외래키 cascade 추가
-alter table imagestory drop constraint imagestory_ibfk_2;
-alter table imagestory add foreign key(imageId) references imageInfo(id) on delete cascade;
-*/
-
 create table Palette(
     image_id int not null,
     r_data int not null,
@@ -104,45 +74,45 @@ create table FavoriteInfo(
 );
 
 
-insert into CategoryInfo(category_name) values ('animal');
-insert into CategoryInfo(category_name) values ('dog');
-insert into CategoryInfo(category_name) values ('cat');
-insert into CategoryInfo(category_name) values ('fish');
-insert into CategoryInfo(category_name) values ('hamster');
-insert into CategoryInfo(category_name) values ('plant');
-insert into CategoryInfo(category_name) values ('leaf');
-insert into CategoryInfo(category_name) values ('flower');
-insert into CategoryInfo(category_name) values ('tree');
-insert into CategoryInfo(category_name) values ('fashion');
-insert into CategoryInfo(category_name) values ('top');
-insert into CategoryInfo(category_name) values ('bottom');
-insert into CategoryInfo(category_name) values ('shoes');
-insert into CategoryInfo(category_name) values ('accessory');
-insert into CategoryInfo(category_name) values ('scenery');
-insert into CategoryInfo(category_name) values ('mountain');
-insert into CategoryInfo(category_name) values ('ocean');
-insert into CategoryInfo(category_name) values ('people');
-insert into CategoryInfo(category_name) values ('food');
-insert into CategoryInfo(category_name) values ('meal');
-insert into CategoryInfo(category_name) values ('dessert');
-insert into CategoryInfo(category_name) values ('receipt');
-insert into CategoryInfo(category_name) values ('barcode');
-insert into CategoryInfo(category_name) values ('screenshot');
-insert into CategoryInfo(category_name) values ('vehicle');
-insert into CategoryInfo(category_name) values ('interior');
+insert into CategoryInfo(category_name) values ('동물');
+insert into CategoryInfo(category_name) values ('강아지');
+insert into CategoryInfo(category_name) values ('고양이');
+insert into CategoryInfo(category_name) values ('물고기');
+insert into CategoryInfo(category_name) values ('햄스터');
+insert into CategoryInfo(category_name) values ('식물');
+insert into CategoryInfo(category_name) values ('잎');
+insert into CategoryInfo(category_name) values ('꽃');
+insert into CategoryInfo(category_name) values ('나무');
+insert into CategoryInfo(category_name) values ('패션');
+insert into CategoryInfo(category_name) values ('상의');
+insert into CategoryInfo(category_name) values ('하의');
+insert into CategoryInfo(category_name) values ('신발');
+insert into CategoryInfo(category_name) values ('악세사리');
+insert into CategoryInfo(category_name) values ('풍경');
+insert into CategoryInfo(category_name) values ('산');
+insert into CategoryInfo(category_name) values ('바다');
+insert into CategoryInfo(category_name) values ('인물');
+insert into CategoryInfo(category_name) values ('음식');
+insert into CategoryInfo(category_name) values ('식사');
+insert into CategoryInfo(category_name) values ('디저트');
+insert into CategoryInfo(category_name) values ('영수증');
+insert into CategoryInfo(category_name) values ('바코드');
+insert into CategoryInfo(category_name) values ('캡쳐화면');
+insert into CategoryInfo(category_name) values ('차량');
+insert into CategoryInfo(category_name) values ('인테리어');
 
-insert into parent_category(category_name, parent_name) values ('dog', 'animal');
-insert into parent_category(category_name, parent_name) values ('cat', 'animal');
-insert into parent_category(category_name, parent_name) values ('fish', 'animal');
-insert into parent_category(category_name, parent_name) values ('hamster', 'animal');
-insert into parent_category(category_name, parent_name) values ('leaf', 'plant');
-insert into parent_category(category_name, parent_name) values ('flower', 'plant');
-insert into parent_category(category_name, parent_name) values ('tree', 'plant');
-insert into parent_category(category_name, parent_name) values ('top', 'fashion');
-insert into parent_category(category_name, parent_name) values ('bottom', 'fashion');
-insert into parent_category(category_name, parent_name) values ('shoes', 'fashion');
-insert into parent_category(category_name, parent_name) values ('accessory', 'fashion');
-insert into parent_category(category_name, parent_name) values ('mountain', 'scenery');
-insert into parent_category(category_name, parent_name) values ('ocean', 'scenery');
-insert into parent_category(category_name, parent_name) values ('meal', 'food');
-insert into parent_category(category_name, parent_name) values ('dessert', 'food');
+insert into parent_category(category_name, parent_name) values ('강아지', '동물');
+insert into parent_category(category_name, parent_name) values ('고양이', '동물');
+insert into parent_category(category_name, parent_name) values ('물고기', '동물');
+insert into parent_category(category_name, parent_name) values ('햄스터', '동물');
+insert into parent_category(category_name, parent_name) values ('잎', '식물');
+insert into parent_category(category_name, parent_name) values ('꽃', '식물');
+insert into parent_category(category_name, parent_name) values ('나무', '식물');
+insert into parent_category(category_name, parent_name) values ('상의', '패션');
+insert into parent_category(category_name, parent_name) values ('하의', '패션');
+insert into parent_category(category_name, parent_name) values ('신발', '패션');
+insert into parent_category(category_name, parent_name) values ('악세사리', '패션');
+insert into parent_category(category_name, parent_name) values ('산', '풍경');
+insert into parent_category(category_name, parent_name) values ('바다', '풍경');
+insert into parent_category(category_name, parent_name) values ('식사', '음식');
+insert into parent_category(category_name, parent_name) values ('디저트', '음식');
