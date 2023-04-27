@@ -7,6 +7,7 @@ import trash from "./routes/trash.js";
 import removeAll from "./routes/removeAll.js";
 import restoreAll from "./routes/restoreAll.js";
 import imageDelete from "./routes/imageDelete.js";
+import recommand from "./routes/recommand.js";
 
 export default () => {
   const app = Router();
@@ -18,5 +19,6 @@ export default () => {
   removeAll(app);
   restoreAll(app);
   imageDelete(app);
+  recommand(app);
   return app;
 };
