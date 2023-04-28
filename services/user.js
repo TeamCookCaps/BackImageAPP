@@ -21,4 +21,18 @@ export class UserService {
             throw new Error(error);
         }
     }
+
+    //nick 으로 사용자 검색
+    async searchUserInfo(nick){
+        let req_query = this.User.getUser(nick);
+        console.log(req_query);
+        try{
+            const connect = await pool.getConnection(async(conn) => conn);
+            const [rows] = await connect.query(req_query);
+            connect.release();
+            return rows; 
+        }catch(error){
+            throw new Error(error);
+        }
+    }
 }
