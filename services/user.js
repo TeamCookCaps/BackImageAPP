@@ -6,8 +6,8 @@ export class UserService {
     }
     
     // firebase uuid 사용자 저장
-    async registerUser(uuid, nick_name){
-        let req_query = this.User.registerQuery(uuid,nick_name);
+    async registerUser(uuid, nick_name, profile_img){
+        let req_query = this.User.registerQuery(uuid,nick_name,profile_img);
         console.log(req_query);
         try {
             const connect = await pool.getConnection(async(conn) => conn);

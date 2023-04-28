@@ -11,9 +11,9 @@ export default (app) => {
     // 사용자 정보 저장
     route.post('/', asyncErrorWrapper(async(req, res, next) => {
         try{
-            const { uuid, nick_name } = req.body;
+            const { uuid, nick_name, profile_img } = req.body;
             let UserServiceInstance = new UserService({User});
-            const user = await UserServiceInstance.registerUser(uuid,nick_name);
+            const user = await UserServiceInstance.registerUser(uuid,nick_name,profile_img);
             res.status(201).json(
                 {
                     location : 'success',
