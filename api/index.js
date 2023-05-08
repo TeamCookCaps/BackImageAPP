@@ -8,6 +8,7 @@ import removeAll from "./routes/removeAll.js";
 import restoreAll from "./routes/restoreAll.js";
 import imageDelete from "./routes/imageDelete.js";
 import recommand from "./routes/recommand.js";
+import story from "./routes/story.js";
 
 export default () => {
   const app = Router();
@@ -20,5 +21,6 @@ export default () => {
   restoreAll(app);
   imageDelete(app);
   recommand(app);
+  story(app);
   return app;
 };
