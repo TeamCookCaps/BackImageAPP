@@ -2,8 +2,9 @@ CREATE DATABASE IF NOT EXISTS `capstonedb` DEFAULT CHARACTER SET utf8;
 USE `capstonedb`;
 
 create table User(
-	UID varchar(60) not null,
+	uid varchar(60) not null,
     nick_name varchar(50) not null,
+    profile_img varchar(200),
 --    password varchar(50),
 PRIMARY KEY(UID)
 );
@@ -52,12 +53,12 @@ foreign key(parent_name) references CategoryInfo(category_name)
 
 create table Palette(
     image_id int not null,
-    r_data int not null,
-    g_data int not null,
-    b_data int not null,
+    r int not null,
+    g int not null,
+    b int not null,
     rgb_type varchar(8) not null
---primary key(image_id),
---foreign key(image_id) references ImageInfo(id)
+--    primary key(image_id),
+--    foreign key(image_id) references ImageInfo(id)
 );
 
 /* palette 테이블 기본키, 외래키 삭제 코드
@@ -116,3 +117,8 @@ insert into parent_category(category_name, parent_name) values ('산', '풍경')
 insert into parent_category(category_name, parent_name) values ('바다', '풍경');
 insert into parent_category(category_name, parent_name) values ('식사', '음식');
 insert into parent_category(category_name, parent_name) values ('디저트', '음식');
+insert into parent_category(category_name, parent_name) values ('인테리어', '인테리어');
+insert into parent_category(category_name, parent_name) values ('차량', '차량');
+insert into parent_category(category_name, parent_name) values ('캡쳐화면', '캡쳐화면');
+insert into parent_category(category_name, parent_name) values ('바코드', '바코드');
+insert into parent_category(category_name, parent_name) values ('영수증', '영수증');
