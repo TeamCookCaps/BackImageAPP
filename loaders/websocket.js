@@ -13,8 +13,8 @@ wss.on("connection", (socket) => {
         try {
           const chatMessages = await chatServiceInstance.getChatMessages(uid1, uid2);
           if (chatMessages) {
-            socket.emit("message", JSON.stringify(chatMessages));
-            console.log('두 유저의 대화내용을 클라이언트에 전송: ', chatMessages);
+            socket.send(JSON.stringify(chatMessages));
+            console.log('두 유저의 대화내용을 클라이언트에 전송: ', JSON.stringify(chatMessages));
           } else {
             console.log("Chat messages not found");
           }
