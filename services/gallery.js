@@ -1,13 +1,13 @@
 import { pool } from "../loaders/database.js";
 
-export class StoryService {
-  constructor({ story }) {
-    this.story = story;
+export class GalleryService {
+  constructor({ gallery }) {
+    this.gallery = gallery;
   }
 
   // 스토리 이미지 조회
-  async getStoryImage(uid) {
-    const req_query = this.story.getStoryImgQuery(uid);
+  async getGalleryImage(uid) {
+    const req_query = this.gallery.getGalleryImgQuery(uid);
     console.log(req_query);
     try {
       const connect = await pool.getConnection(async (conn) => conn);
