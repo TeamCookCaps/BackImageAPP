@@ -10,7 +10,7 @@ const ImageInfo = {
             LEFT JOIN (
             SELECT imageid, favorite_yn FROM FavoriteInfo WHERE uid='${uid}'
             ) f ON ii.id = f.imageid
-            WHERE uid='${uid}' AND delete_yn='N';`,
+            WHERE uid='${uid}' AND delete_yn='N' AND gallery_yn='N';`,
 
   getSearchResult: (
     uid,
