@@ -8,12 +8,13 @@ wss.on("connection", (socket) => {
     console.log("WebSocket connected");
     socket.on("message", async (message) => {
       const { uid1, uid2, chatMessage } = JSON.parse(message);
-      console.log(uid1, uid2);
+      console.log(chatMessage);
       if (chatMessage === "openModal") {
         try {
           const chatMessages = await chatServiceInstance.getChatMessages(uid1, uid2);
           if (chatMessages) {
-            socket.emit("chatMessages", JSON.stringify(chatMessages));
+            socket.send(JSON.stringify(chatMessages));
+            console.log('두 유저의 대화내용을 클라이언트에 전송: ', JSON.stringify(chatMessages));
           } else {
             console.log("Chat messages not found");
           }
@@ -22,8 +23,8 @@ wss.on("connection", (socket) => {
         }
       } else {
         try {
-          const result = await chatServiceInstance.saveChatMessage(uid1, uid2, chatMessage);
-          console.log(`save the message: ${result}`);
+            const result = await chatServiceInstance.saveChatMessages(uid1, uid2, chatMessage);
+            console.log(result);
         } catch (error) {
           console.error(`DB error: ${error}`);
         }
