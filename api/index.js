@@ -9,6 +9,8 @@ import restoreAll from "./routes/restoreAll.js";
 import imageDelete from "./routes/imageDelete.js";
 import recommand from "./routes/recommand.js";
 import gallery from "./routes/gallery.js";
+import saveDescription from "./routes/saveDescription.js";
+import getDescription from "./routes/getDescription.js";
 
 export default () => {
   const app = Router();
@@ -22,5 +24,7 @@ export default () => {
   imageDelete(app);
   recommand(app);
   gallery(app);
+  saveDescription(app);
+  getDescription(app);
   return app;
 };
