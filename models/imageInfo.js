@@ -21,7 +21,7 @@ const ImageInfo = {
                               LEFT OUTER JOIN (
                                 select imageid,favorite_yn from FavoriteInfo where uid='${uid}'
                               ) f on a.id = f.imageid
-                              where delete_yn='N' and (image_location like '%${word}%' or b.category_name like '%${word}%' or parent_name like '%${word}%');`,
+                              where delete_yn='N' and (image_location like '%${word}%' or b.category_name like '%${word}%');`,
 
   getSearchWordColorResult: (
     uid,
@@ -38,8 +38,7 @@ const ImageInfo = {
                                                 from palette
                                                 group by palette.image_id) d on b.image_id = d.image_id
                                                 where b.image_id in(${image_id}) and (image_location like '%${word}%' 
-                                                or b.category_name like '%${word}%'
-                                                or parent_name like '%${word}%') AND delete_yn='N';`,
+                                                or b.category_name like '%${word}%') AND delete_yn='N';`,
   getSimilarColors: (listR, listG, listB) =>
     `SELECT image_id FROM palette WHERE r in(${listR}) AND g in(${listG}) AND b in(${listB})`,
 };
