@@ -42,6 +42,14 @@ const ImageInfo = {
                                                 or parent_name like '%${word}%') AND delete_yn='N';`,
   getSimilarColors: (listR, listG, listB) =>
     `SELECT image_id FROM palette WHERE r in(${listR}) AND g in(${listG}) AND b in(${listB})`,
+
+  getFavoriteImages: (uid) => `SELECT image_id, ii.uid, ci.category_name, image_url, image_date, image_location, image_width, image_height, delete_yn, parent_name, favorite_yn
+  FROM ImageCategory ic
+  INNER JOIN ImageInfo ii ON ic.image_id = ii.id
+  INNER JOIN CategoryInfo ci ON ic.category_name = ci.category_name
+  LEFT JOIN parent_category pc ON ic.category_name = pc.category_name
+  INNER JOIN favoriteinfo fi ON ii.id = fi.imageid
+  WHERE fi.uid = '${uid}' AND fi.favorite_yn = 'y' AND delete_yn='N' AND gallery_yn='N';`
 };
 
 export default ImageInfo;
