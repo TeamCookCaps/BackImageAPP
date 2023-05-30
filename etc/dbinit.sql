@@ -74,6 +74,16 @@ create table FavoriteInfo(
     foreign key(uid) references user(uid)
 );
 
+-- 커미션 채팅내역 테이블 생성
+create table chatInfo(
+   id int AUTO_INCREMENT,
+   uid1 varchar(60) not null,
+    uid2 varchar(60) not null,
+    message varchar(900) not null,
+    primary key(id),
+    foreign key(uid1) references user(uid),
+    foreign key(uid2) references user(uid)
+);
 
 insert into CategoryInfo(category_name) values ('동물');
 insert into CategoryInfo(category_name) values ('강아지');
@@ -102,26 +112,17 @@ insert into CategoryInfo(category_name) values ('캡쳐화면');
 insert into CategoryInfo(category_name) values ('차량');
 insert into CategoryInfo(category_name) values ('인테리어');
 
-insert into parent_category(category_name, parent_name) values ('강아지', '동물');
-insert into parent_category(category_name, parent_name) values ('고양이', '동물');
-insert into parent_category(category_name, parent_name) values ('물고기', '동물');
-insert into parent_category(category_name, parent_name) values ('햄스터', '동물');
-insert into parent_category(category_name, parent_name) values ('잎', '식물');
-insert into parent_category(category_name, parent_name) values ('꽃', '식물');
-insert into parent_category(category_name, parent_name) values ('나무', '식물');
-insert into parent_category(category_name, parent_name) values ('상의', '패션');
-insert into parent_category(category_name, parent_name) values ('하의', '패션');
-insert into parent_category(category_name, parent_name) values ('신발', '패션');
-insert into parent_category(category_name, parent_name) values ('악세사리', '패션');
-insert into parent_category(category_name, parent_name) values ('산', '풍경');
-insert into parent_category(category_name, parent_name) values ('바다', '풍경');
-insert into parent_category(category_name, parent_name) values ('식사', '음식');
-insert into parent_category(category_name, parent_name) values ('디저트', '음식');
-insert into parent_category(category_name, parent_name) values ('인테리어', '인테리어');
-insert into parent_category(category_name, parent_name) values ('차량', '차량');
-insert into parent_category(category_name, parent_name) values ('캡쳐화면', '캡쳐화면');
-insert into parent_category(category_name, parent_name) values ('바코드', '바코드');
+insert into parent_category(category_name, parent_name) values ('동물', '동물');
+insert into parent_category(category_name, parent_name) values ('식물', '식물');
+insert into parent_category(category_name, parent_name) values ('패션', '패션');
+insert into parent_category(category_name, parent_name) values ('풍경', '풍경');
+insert into parent_category(category_name, parent_name) values ('인물', '인물');
+insert into parent_category(category_name, parent_name) values ('음식', '음식');
 insert into parent_category(category_name, parent_name) values ('영수증', '영수증');
+insert into parent_category(category_name, parent_name) values ('기프티콘', '기프티콘');
+insert into parent_category(category_name, parent_name) values ('캡쳐화면', '캡쳐화면');
+insert into parent_category(category_name, parent_name) values ('차량', '차량');
+insert into parent_category(category_name, parent_name) values ('인테리어', '인테리어');
 
 delete from Parent_category where category_name='바코드';
 delete from ImageCategory where category_name='바코드';
@@ -129,5 +130,4 @@ delete from CategoryInfo where category_name='바코드';
 insert into CategoryInfo values ('기프티콘','N');
 insert into parent_category(category_name, parent_name) values ('기프티콘', '기프티콘');
 alter table ImageInfo change story_yn gallery_yn char(1);
-insert into CategoryInfo(category_name) values ('일러스트');
 alter table ImageInfo add description varchar(1000); 
