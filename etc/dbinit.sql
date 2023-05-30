@@ -122,3 +122,12 @@ insert into parent_category(category_name, parent_name) values ('차량', '차�
 insert into parent_category(category_name, parent_name) values ('캡쳐화면', '캡쳐화면');
 insert into parent_category(category_name, parent_name) values ('바코드', '바코드');
 insert into parent_category(category_name, parent_name) values ('영수증', '영수증');
+
+delete from Parent_category where category_name='바코드';
+delete from ImageCategory where category_name='바코드';
+delete from CategoryInfo where category_name='바코드';
+insert into CategoryInfo values ('기프티콘','N');
+insert into parent_category(category_name, parent_name) values ('기프티콘', '기프티콘');
+alter table ImageInfo change story_yn gallery_yn char(1);
+insert into CategoryInfo(category_name) values ('일러스트');
+alter table ImageInfo add description varchar(1000); 
