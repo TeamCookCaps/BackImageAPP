@@ -20,4 +20,20 @@ export class ImageInfoService {
       throw new Error(error);
     }
   }
+
+  // 좋아요 이미지 정보 조회
+  async getFavoriteImageInfo(uid) {
+    const req_query = this.ImageInfo.getFavoriteImages(uid);
+    console.log(req_query);
+    try {
+      const connect = await pool.getConnection(async (conn) => conn);
+      const [rows] = await connect.query(req_query);
+
+      connect.release();
+
+      return rows;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

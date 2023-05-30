@@ -11,6 +11,7 @@ import recommand from "./routes/recommand.js";
 import gallery from "./routes/gallery.js";
 import saveDescription from "./routes/saveDescription.js";
 import getDescription from "./routes/getDescription.js";
+import favoriteImageInfo from "./routes/favoriteImageInfo.js";
 
 export default () => {
   const app = Router();
@@ -26,5 +27,6 @@ export default () => {
   gallery(app);
   saveDescription(app);
   getDescription(app);
+  favoriteImageInfo(app);
   return app;
 };
