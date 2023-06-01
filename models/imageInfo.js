@@ -46,7 +46,9 @@ const ImageInfo = {
   INNER JOIN CategoryInfo ci ON ic.category_name = ci.category_name
   LEFT JOIN parent_category pc ON ic.category_name = pc.category_name
   INNER JOIN favoriteinfo fi ON ii.id = fi.imageid
-  WHERE fi.uid = '${uid}' AND fi.favorite_yn = 'y' AND delete_yn='N' AND gallery_yn='N';`
+  WHERE fi.uid = '${uid}' AND fi.favorite_yn = 'y' AND delete_yn='N' AND gallery_yn='N';`,
+
+  getImageColor : () => `select image_id, r,g,b from palette;`,
 };
 
 export default ImageInfo;
