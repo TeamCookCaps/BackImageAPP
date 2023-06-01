@@ -87,6 +87,7 @@ export class SearchService {
         console.log(inputColor);
 
         const similarColorsImageId = [];
+        if(similarColorsImageId?.length === 0) similarColorsImageId.push("0");
 
         for(const color of colorData){
             const diff = this.calculateColorDifference(inputColor,color.rgb);
