@@ -32,6 +32,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/express", "npm:4.17.17"],\
             ["@types/node", "npm:18.15.5"],\
             ["body-parser", "npm:1.20.2"],\
+            ["color-diff", "npm:1.3.0"],\
             ["cookie-parser", "npm:1.4.6"],\
             ["cors", "npm:2.8.5"],\
             ["dotenv", "npm:16.0.3"],\
@@ -292,6 +293,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/express", "npm:4.17.17"],\
             ["@types/node", "npm:18.15.5"],\
             ["body-parser", "npm:1.20.2"],\
+            ["color-diff", "npm:1.3.0"],\
             ["cookie-parser", "npm:1.4.6"],\
             ["cors", "npm:2.8.5"],\
             ["dotenv", "npm:16.0.3"],\
@@ -614,6 +616,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["color-convert", "npm:1.9.3"],\
             ["color-name", "npm:1.1.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["color-diff", [\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/color-diff-npm-1.3.0-38c136af99-56ec7305fc.zip/node_modules/color-diff/",\
+          "packageDependencies": [\
+            ["color-diff", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
