@@ -70,15 +70,8 @@ export class SearchService {
         const colorData = [];
         
         for(const r of result){
-            colorData.push({ image_id : r.image_id, 
-                rgb :{
-                    r : r.r,
-                    g : r.g,
-                    b : r.b,
-                }
-            });
+            colorData.push({ image_id : r.image_id, rgb :{r : r.r, g : r.g, b : r.b,}});
         }
-       // console.log(colorData);
 
         //입력받은 색상 rgb 값으로 변경
         const inputColor = this.hexToRGB(color);
@@ -87,19 +80,20 @@ export class SearchService {
         console.log(inputColor);
 
         const similarColorsImageId = [];
-        if(similarColorsImageId?.length === 0) similarColorsImageId.push("0");
 
         for(const color of colorData){
             const diff = this.calculateColorDifference(inputColor,color.rgb);
-            //console.log(color.rgb);
-            console.log(diff);
-
-            if(diff <= 30){
+            
+            if(diff <= 10){
                 similarColorsImageId.push(color.image_id);
+                console.log(this.RGBToHex(color.rgb));
             }
         }
-
+        
+        console.log("similarColorsImageId");
         console.log(similarColorsImageId);
+
+        if(similarColorsImageId?.length === 0) similarColorsImageId.push(0);
 
         //유사한색상의 이미지 id 로 검색
         let req_query = this.ImageInfo.getSearchWordColorResult(uid, word ,similarColorsImageId);

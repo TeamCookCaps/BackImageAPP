@@ -48,7 +48,7 @@ const ImageInfo = {
   INNER JOIN favoriteinfo fi ON ii.id = fi.imageid
   WHERE fi.uid = '${uid}' AND fi.favorite_yn = 'y' AND delete_yn='N' AND gallery_yn='N';`,
 
-  getImageColor : () => `select image_id, r,g,b from palette;`,
+  getImageColor : () => `select image_id, r,g,b from palette where rgb_type='dominant';`,
 };
 
 export default ImageInfo;
